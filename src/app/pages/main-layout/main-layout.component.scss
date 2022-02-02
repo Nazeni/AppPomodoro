@@ -1,0 +1,342 @@
+@import '../../../styles.scss';
+.main-layout-container {
+    max-width: 650px;
+    width: 100%;
+    margin: auto;
+    color: white;
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 65px;
+        
+        @include mobile {
+            height: 55px;
+            padding: 0px 15px;
+            
+        }
+        
+        h1 {
+            a {
+                font-size: 21px;
+                font-weight: bold;
+                color: white;
+            }
+        }
+
+        .setting-bar-list {
+            display: flex;
+            justify-content: space-between;
+            max-width: 310px;
+            width: 100%;
+
+            @include mobile{
+                max-width: 120px;
+                
+            }
+    
+            li {
+                padding: 5px 13px;
+                border-radius: 4px;
+                background-color: rgba(254, 254, 254, 0.2);
+                opacity: 0.8;
+                font-size: 13px;
+                cursor: pointer;
+
+                @include mobile {
+
+                    font-size: 19px;
+                    padding: 2px 5px;
+
+                }
+
+                i {
+                    padding: 0px 3px 0px 0px;
+                }
+
+                span {
+
+                    @include mobile{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+.logo-icon{
+    font-size: 20px;
+    margin-right: 5px;
+}   
+.main-container{
+
+    width: 480px;
+    margin: auto;
+    margin-top: 50px;
+    padding-bottom: 60px;
+
+    @include mobile {
+        
+        padding: 0px 15px;
+        padding-bottom: 60px;
+    }
+
+    .todo-title {
+            
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+
+    .tasks-heading-section {
+        
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        position: relative;
+
+        span {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+    .tasks-dropdown-bar {
+        
+        display: inline-block;
+        cursor: pointer;
+
+        .tasks-button {
+
+            border-radius: 4px;
+            border-color: unset;
+            background-color: rgba(254, 254, 254, 0.1);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .tasks-dropdown-content {
+            z-index: 1;
+            position: absolute;
+            right: 0px;
+            top: 45px;
+            min-width: 195px;
+            background-color: white;
+            border-radius: 4px;
+            color: #393939;
+            font-size: 14px;
+            padding: 5px 0px;
+            box-sizing: border-box;
+            box-shadow: -3px 7px 10px -3px lightgrey;
+
+            div {
+                padding: 2px 10px;
+
+                    &:hover {
+                        background-color: #F1EEEE;
+                    }
+            }
+        }
+    }
+        
+   i {
+        font-size: 18px;
+        padding: 8px 7px;
+    }
+}
+    hr {
+        background-color: #FFFFFF !important;
+        margin-top: 15px;
+        height: 2px !important;
+        opacity: 0.6;
+    }
+}
+
+.tasks-section-container {
+        
+    margin-top: 25px !important;
+    
+}
+
+//tasks dropdown bar
+.add-button {
+
+    border-radius: 6px;
+    width: 100%;
+    height: 70px;
+    margin-top: 9px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 17px;
+    border: 2px dashed rgba(254, 254, 254, 0.3);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+//pomodoro add section
+.pomodoro-add-section {
+    
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 15px;
+    
+    .input {
+        margin-top: 15px;
+        font-size: 22px;
+        border: none;
+        box-shadow: none;
+        font-weight: bold;
+    }
+    
+    .set-estimate-num {
+        
+        padding: 3px 17px;
+        font-weight: bold;
+        color: #393939;
+        margin-top: 20px;
+
+        .incr-decr-buttons {
+            display: flex;
+            margin-top: 5px;
+
+            input {
+                
+                background-color: #EFEFEF;
+                border-radius: 4px;
+                border:none;
+                width: 70px;
+                height: 40px;
+                color: #555555;
+                font-weight: bold;
+                padding: 0px 10px;
+
+            }
+            .button {
+                margin-left: 3px;
+                width: 40px;
+                height: 35px;
+                margin-top: 3px;
+                box-shadow: 0px 3px 3px lightgrey
+            }
+            .left-button {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .note-group-buttons{
+
+        cursor: pointer;
+        padding: 10px 13px;
+        
+        button{
+           
+            border: none;
+            background-color: unset;
+            color: #A8A8A8;
+            text-decoration: underline;
+
+            i{
+                margin-left: 7px;
+                font-size: 11px;
+            }
+        }
+
+        .control{
+
+            margin-top: 10px;
+            margin-bottom: 5px;
+
+            .textarea{
+                min-height: 60px;
+                background-color: #EFEFEF;
+                border: unset;
+            }
+        }
+    }
+
+    .add-section-footer{
+        margin-top: 14px;
+        padding: 14px 0px;
+        background-color: #EFEFEF;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        display: flex;
+        justify-content: flex-end;
+        
+        button{
+            margin-right: 18px;
+        }
+
+        .cancel-btn{
+            
+            border:none;
+            background-color: unset;
+            color: #929292;
+            font-weight: 500;
+        }
+
+        .save-btn{
+            color: white;
+            background-color: #363636;
+            box-shadow: 0px 3px 4px;
+            opacity: 0.3;
+
+            &:valid{
+
+                opacity: 1;
+
+                &:hover{
+
+                    background-color: black;
+                }
+            }
+        }
+    }
+}
+////   pomodoro-add-section end
+
+.results{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(254, 254, 254, 0.1);
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+
+    .results-list{
+
+        padding: 0px 9px;
+
+        p {
+            display: inline; 
+            color: white;
+            opacity: 0.7;
+        
+          }
+
+        span{
+
+            font-size: 25px;
+            color: white;
+            padding: 0px 5px;
+            font-weight: 500;
+        }
+    }
+}
+// .cdk-drag-preview {
+//     background-color: yellowgreen;
+// }
+// .cdk-drag-placeholder {
+//     opacity: 0;
+// }
+
+
+
+
+
+
+
+

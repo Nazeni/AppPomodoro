@@ -1,0 +1,27 @@
+<div class="main-container" *ngIf="showSetting"> 
+  <div class="inner-container">
+    <div class="title">
+      <h2>Timer Setting</h2>
+      <button class="close-button fas fa-times" (click)="close($event)"></button>
+    </div>
+    <div class="change-timer">
+      <div class="time-minutes">
+        <span>Time(minutes)</span>
+      </div>
+      <div class="timer-inputs">
+        <div class="time-input">
+          <label>Pomodoro</label> 
+          <input type="number" min=0 value="10" [(ngModel)]="pSecond" (ngModelChange)="pChange($event)">
+        </div>
+        <div class="time-input">
+          <label>Short Break</label> 
+        <input type="number" min=0 value ="15" [(ngModel)]="shortSecond" (ngModelChange)="shortChange($event)">
+        </div>
+        <div class="time-input">
+          <label>Long Break</label> 
+          <input type="number" min=0 value="20" [(ngModel)]="longSecond" (ngModelChange)="longChange($event)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="pomodoro-main-section">
+    <div class="pomodoro-add-section" *ngIf="index.showEditForm" #editForm>
+        <form #pomodoroEditForm="ngForm" (ngSubmit)='OnFormUpdate(pomodoroEditForm)'>
+            <div class="input-pomodoro" [(ngModel)]="isDone" name="isDone">
+                <input class="input" type="text" required [(ngModel)]="title" placeholder="What are you working on?"
+                    name="title">
+            </div>
+            <div class="set-estimate-num">
+                <span>Est Pomodoros</span>
+                <div class="incr-decr-buttons">
+                    <input type="number" [(ngModel)]="est " name="est" min="0" max="100">
+                    <button class="button left-button fas fa-sort-down" type="button"
+                        (click)="est <= 0? est = 0: est = est - 1"></button>
+                    <button class="button fas fa-sort-up" type="button"
+                        (click)="est >= 100? est = 100: est = +est + 1"></button>
+                </div>
+            </div>
+            <div class="note-group-buttons">
+                <button (click)="openNotearea = !openNotearea" *ngIf="!openNotearea"> + Add Note </button>
+                <div *ngIf="openNotearea" class="control" name="noteArea">
+                    <textarea class="textarea" placeholder="Some notes.." [(ngModel)]="note" name="note"></textarea>
+                </div>
+                <button>+ Add Project <i class="fas fa-lock"></i></button>
+            </div>
+            <div class="add-section-footer">
+                <button type="button" class="button cancel-btn" (click)="deletePomodoro(index)">Delete</button>
+                <div>
+                    <button type="button" class="button cancel-btn"
+                        (click)="index.showEditForm = !index.showEditForm">Cancel</button>
+                    <button type="button" class="button save-btn" type="submit"
+                        [disabled]="!pomodoroEditForm.valid">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="pomodoro-card" *ngIf="!index.showEditForm">
+        <div class="pomodoro-section">
+            <div class="pomodoro-title">
+                <div class="done-icon fas fa-check-circle" [ngClass]="isDone? 'done': 'not-done'"
+                    (click)="[onMarkedPomodoro(index), onGetEstCount(index)]"> </div>
+                <span [ngClass]="isDone? 'add-done-style': 'rem-done-style'">{{title}}</span>
+            </div>
+            <div class="card-edit-section">
+                <span>{{act}}/ <span>{{est}}</span></span>
+                <button class="card-edit-button" (click)="onEditPomodoro(pomodoroEditForm)"><i
+                        class="fas fa-ellipsis-v"></i></button>
+            </div>
+        </div>
+        <div class="pomodoro-note" *ngIf="note">
+            <p class="note">{{note}}</p>
+        </div>
+    </div>
+</div>

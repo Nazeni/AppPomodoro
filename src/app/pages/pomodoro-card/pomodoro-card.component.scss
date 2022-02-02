@@ -1,0 +1,238 @@
+@import '../../../styles.scss';
+
+:host-context(.selected) .pomodoro-card{
+    box-shadow: inset 6px 0px 0px rgb(12, 12, 12);
+    cursor: pointer;
+}
+.pomodoro-add-section{
+    
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 15px;
+    
+    .input {
+        margin-top: 15px;
+        font-size: 22px;
+        border: none;
+        box-shadow: none;
+        font-weight: bold;
+    }
+
+    .set-estimate-num {
+        
+        padding: 3px 17px;
+        font-weight: bold;
+        color: #393939;
+        margin-top: 20px;
+
+        
+        .incr-decr-buttons{
+            display: flex;
+            margin-top: 5px;
+
+            input{
+                
+                background-color: #EFEFEF;
+                border-radius: 4px;
+                border:none;
+                width: 70px;
+                height: 40px;
+                color: #555555;
+                font-weight: bold;
+                padding: 0px 10px;
+
+            }
+            
+            .button{
+                margin-left: 3px;
+                width: 40px;
+                height: 35px;
+                margin-top: 3px;
+                box-shadow: 0px 3px 3px lightgrey
+            }
+            
+            .left-button{
+
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .note-group-buttons{
+
+        cursor: pointer;
+        padding: 10px 13px;
+        
+        button{
+           
+            border: none;
+            background-color: unset;
+            color: #A8A8A8;
+            text-decoration: underline;
+
+            i{
+                margin-left: 7px;
+                font-size: 11px;
+            }
+        }
+
+        .control{
+
+            margin-top: 10px;
+            margin-bottom: 5px;
+
+            .textarea{
+                min-height: 60px;
+                
+                background-color: #EFEFEF;
+                border: unset;
+            }
+        }
+    }
+
+    .add-section-footer{
+        margin-top: 14px;
+        padding: 14px 0px;
+        background-color: #EFEFEF;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        display: flex;
+        justify-content: space-between;
+        
+        button{
+
+            margin-right: 18px;
+        }
+
+        .cancel-btn{
+            
+            border:none;
+            background-color: unset;
+            color: #929292;
+            font-weight: 500;
+        }
+
+        .save-btn{
+            color: white;
+            background-color: #363636;
+            box-shadow: 0px 3px 4px;
+            opacity: 0.3;
+
+            &:valid{
+
+                opacity: 1;
+
+                &:hover{
+
+                    background-color: black;
+                }
+            }
+        }
+    }
+}
+.pomodoro-card{
+    
+    width: 100%;
+    min-height: 63px;
+    border-radius: 4px;
+    border: none;
+    background-color: white;
+    padding: 5px 16px;
+    color: $grey;
+    margin-top: 10px;
+    cursor: pointer;
+
+    .pomodoro-section{
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 7px;
+    }
+
+    &:hover {
+
+        box-shadow: inset 6px 0px 0px rgb(167, 165, 165);
+    }
+
+    .pomodoro-title{
+        
+        span{
+
+            color: #555555;
+            font-weight: 500;
+        }
+    }
+
+    .done-icon{
+        
+        font-size: 25px;
+        color: lightgray;
+        padding: 0px 10px 0px 0px;
+
+        &:hover{
+
+            color: rgb(235, 232, 232);
+        }
+    }
+
+    .done {
+        color: #DB524D;
+        
+        
+        &:hover{
+            color: #DB524D;
+            opacity: 0.4;
+        }
+    }
+    .not-done{
+        
+        color: lightgray
+    }
+
+    .add-done-style{
+        
+        text-decoration: line-through;
+        color: #BBBBBB !important;
+    }
+
+    .rem-done-style{
+        color: #555555;
+    }
+
+    .card-edit-section{
+
+        span{
+            padding: 0px 13px 0px 0px;
+            font-size: 18px;
+            color: rgb(206, 200, 200);
+            font-weight: 500;
+            
+            span{
+
+                font-size: 15px;
+            }
+        }
+    }
+
+    .card-edit-button {
+
+        border-radius: 4px;
+        background-color: white;
+        color: #999999;
+        border: 0.5px solid lightgrey;
+        font-size: 18px;
+        padding: 5px 11px;
+        cursor: pointer;
+    }
+
+    .pomodoro-note{
+        
+        padding: 11px 11px;
+        border-radius: 6px;
+        background-color: #FCF8DE;
+        box-shadow: 0px 1px lightgrey;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,30 @@
+.main-layout-container {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    background-color: burlywood;
+    margin-top: 10px;
+
+    .logo{
+        max-width: 400px;
+        width: 100%;
+        margin: auto;
+
+        h1{
+            
+            a{
+                color: white;
+
+                i{
+                    padding-right: 10px;
+                    font-size: 55px;
+                }
+            }
+        }
+    }
+}
+h1{
+    font-size: 42px !important;
+    font-weight: 430;
+    text-align: center;
+}

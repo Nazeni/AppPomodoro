@@ -1,0 +1,19 @@
+<div class="line">
+    <div class="thick-line" #thickLine></div>
+</div>
+<div class="main-container">
+    <div class="timer-container">
+        <ul class="timer-bar">
+            <li *ngFor="let t of list" (click)="select(t)" [ngClass]="{active: isActive(t)}">{{t}}</li>
+        </ul>
+        <div  class="timer time-box" *ngIf="this.showTime > 0">{{ this.showTime |timer }}</div>
+        <div class="buttons" #timerButtons>
+            <button class="button start-button" (click)="[playAudioClick(), startTimer()]"
+                *ngIf="!changeButton">START</button>
+            <ng-template [ngIf]='changeButton'>
+                <button class="button stop-button" (click)="[stopTimer(), playAudioClick()]">STOP</button>
+            </ng-template>
+            <button class="play-foreward fas fa-step-forward" *ngIf="changeButton" (click)="playForeward()"></button>
+        </div>
+    </div>
+</div>

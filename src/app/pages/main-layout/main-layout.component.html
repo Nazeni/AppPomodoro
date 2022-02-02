@@ -1,0 +1,121 @@
+<div cdkDropList  class="main-layout-container" (cdkDropListDropped)="drop($event)">
+    <timer-setting [(showSetting)]="showSetting"
+                    [(pSecond)]="pSecond" 
+                    [(shortSecond)]="shortSecond" 
+                    [(longSecond)]="longSecond">
+    </timer-setting>
+    <div class="top-bar">
+        <h1><a href="#">
+                <i class="fas fa-check-circle logo-icon"></i>
+                <span>Pomofocus</span>
+            </a>
+        </h1>
+        <ul class="setting-bar-list">
+            <li>
+                <i class="fas fa-chart-bar"></i>
+                <span>Report</span>
+            </li>
+            <li (click)="openSetting()">
+                <i class="fas fa-cog"></i>
+                <span>Setting</span>
+            </li>
+            <li routerLink="/login">
+                <i class="fas fa-user-circle"></i>
+                <span>Login</span>
+            </li>
+        </ul>
+    </div>
+
+    <app-timer #timer [pSecond]="pSecond"
+                      [shortSecond]="shortSecond"
+                      [longSecond]="longSecond"
+                      (totalActChange) = "getActChange($event)">
+    </app-timer>
+
+    <div class="main-container  tasks-section-container">
+        <div class="todo-title">
+            <span>#{{turn}}</span>
+            <h3> {{item}}</h3>
+        </div>
+        <div class="tasks-heading-section">
+            <span>Tasks</span>
+            <div class="tasks-dropdown-bar">
+                <button class="tasks-button" (click)="showDropdown($event)"><i class="fas fa-ellipsis-v"></i>
+                </button>
+                <div #dropDown class="tasks-dropdown-content"
+                    [ngStyle]="{'display': showTasksDropdown ? 'block': 'none'}">
+
+                    <div (click)="clearFinishedTasks()"><i class="fas fa-trash-alt"></i>Clear finished tasks</div>
+                    <div><i class="fas fa-check"></i>Clear act pomodoros</div>
+                    <div><i class="fas fa-save"></i>Save as template</div>
+                    <div><i class="fas fa-plus"></i>Add from template</div>
+                    <div (click)="clearAllTasks()"><i class="fas fa-trash-alt"></i>Clear all tasks</div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <app-pomodoro-card  class="example-custom-placeholder" *ngFor="let pomodoro of pomodoros; index as i"
+            cdkDrag
+            [class.selected]='pomodoro === selectedPomodoro' [index]="pomodoro" [title]="pomodoro.title"
+            [est]="pomodoro.est" [note]="pomodoro.note" [act]="pomodoro.act" [isDone]="pomodoro.isDone"
+            (marked)="markedPomodoro($event)" (getEst)="getEstCount($event)" 
+            (click)="onSelect(pomodoro)" (getEditedEst)="getEditedEstValue($event)">
+        </app-pomodoro-card>
+
+        <button class="add-button fas fa-plus-circle" (click)="add()" *ngIf="!showAddForm"> Add
+            Task
+        </button>
+        <div class="pomodoro-add-section" *ngIf="showAddForm" @openAddForm>
+            <form #pomodoroForm="ngForm" (ngSubmit)='onFormSubmit(pomodoroForm)'>
+                <!-- <div class="input-pomodoro" [(ngModel)]="pomodoro.isDone" name="isDone"> -->
+                <div class="input-pomodoro">
+                    <input class="input" type="hidden" required [(ngModel)]="pomodoro.isDone"
+                        name="isDone">
+                    <input class="input" type="text" required [(ngModel)]="pomodoro.title"
+                        placeholder="What are you working on?" name="title">
+                </div>
+                <div class="set-estimate-num">
+                    <span>Est Pomodoros</span>
+                    <div class="incr-decr-buttons">
+                        <input type="number" required [(ngModel)]="pomodoro.est" name="est" min="1" max="100">
+                        <button class="button left-button fas fa-sort-down" type="button"
+                            (click)="pomodoro.est <= 0? pomodoro.est = 0: pomodoro.est = pomodoro.est - 1"></button>
+                        <button class="button fas fa-sort-up" type="button"
+                            (click)="pomodoro.est >= 100? pomodoro.est = 100: pomodoro.est = +pomodoro.est + 1"></button>
+                        <input type="hidden" name="act" [(ngModel)]="pomodoro.act" value="0">
+                    </div>
+                </div>
+                <div class="note-group-buttons">
+                    <button (click)="openNotearea = !openNotearea" *ngIf="!openNotearea"> + Add Note </button>
+                    <div *ngIf="openNotearea" class="control" name="noteArea">
+                        <textarea class="textarea" placeholder="Some notes.." [(ngModel)]="pomodoro.note"
+                            name="note"></textarea>
+                    </div>
+                    <button>+ Add Project <i class="fas fa-lock"></i></button>
+                </div>
+                <div class="add-section-footer">
+                    <button class="button cancel-btn" (click)="showAddForm = !showAddForm">Cancel</button>
+                    <button class="button save-btn" type="submit" [disabled]="!pomodoroForm.valid">Save</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="results" *ngIf="showResults">
+            <div class="estimated results-list">
+                <p>Est:</p>
+                <span>{{estCount}}</span>
+            </div>
+            <div class="act results-list">
+                <p>Act:</p>
+                <span>
+                    {{totalAct}}
+                </span>
+            </div>
+            <div class="finish-time results-list">
+                <p>Finish at</p>
+                <span>{{ time | getTime}}</span>
+            </div>
+        </div>
+    </div>
+</div>

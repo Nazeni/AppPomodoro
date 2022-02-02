@@ -1,0 +1,48 @@
+// changing global veriables and adding glublas styles
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+@import "scss/fontawesome.scss";
+@import "scss/solid.scss";
+
+
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+$red:#D95550;
+$grey: #555555;
+$light-red:#DF645F;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+//responsive 
+@mixin mobile{
+     @media screen and (max-width:600px){
+        @content;
+    }
+}
+
+body{
+    background-color: $red;
+    transition: background-color 0.8s ease-in-out;
+    min-height: 100vh;
+    height: unset !important;
+}
+
